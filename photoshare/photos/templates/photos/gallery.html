@@ -14,6 +14,11 @@
             height: 220px;
             object-fit: cover;
         }
+        .list-group-item a{
+          text-decoration: none;
+          color: black;
+
+        }
     </style>
 </head>
 <body class="m-5">
@@ -27,9 +32,16 @@
                       Categories
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">All</li>
+                      <li class="list-group-item">
+                        <a href="{% url 'gallery' %}">All</a>
+
+                      </li>
                         {% for category in categories %}
-                        <li class="list-group-item">{{category.name}}</li>
+                        <li class="list-group-item">
+                          <a href="{% url 'gallery' %}?category={{category.name}}">
+                            {{category.name}}
+                          </a>
+                        </li>
                         
                         {% endfor %}
             
@@ -48,7 +60,7 @@
                     <div class="col-md-4">  
                         <div class="card my-2">
                         <img class="image-thumbail" src="{{photo.image.url}}" alt="Card image cap">
-
+                  
                         <div class="card-body">
                           <small>Category: {{photo.category.name}}</small>
                         </div>
